@@ -1,17 +1,14 @@
 <template>
     <div class="ui-render-root">
         <layout>
-            <template #top>
-                <div>top</div>
-            </template>
             <template #left>
-                <div>left</div>
+                <compnent-list></compnent-list>
             </template>
             <template #middle>
-                <div>middle</div>
+                <render-content></render-content>
             </template>
             <template #right>
-                <div>right</div>
+                <component-config></component-config>
             </template>
         </layout>
     </div>
@@ -19,12 +16,23 @@
 
 <script>
     import Layout from "../../components/layout"
+    import CompnentList from "./components/compnent-list"
+    import RenderContent from "./components/render-content"
+    import ComponentConfig from "./components/component-config"
     export default {
         name: "ui-render",
-        components: {Layout}
+        components: {ComponentConfig, RenderContent, CompnentList, Layout}
     }
 </script>
 
 <style scoped>
+::v-deep .content .left{
+  width: 300px;
+  border-right: 1px solid #ebeef5;
+}
 
+::v-deep .content .right{
+  width: 300px;
+  border-left: 1px solid #ebeef5;
+}
 </style>

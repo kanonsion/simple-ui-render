@@ -2,14 +2,32 @@
     <div class="render-content-root">
         <div class="toolbar"></div>
         <div class="main-content">
-            <div class="content"></div>
+            <vue-draggable
+                v-model="drag"
+                group="comp">
+                <div class="content">
+
+                </div>
+            </vue-draggable>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "render-content"
+        name: "render-content",
+        data(){
+            return {
+                drag: []
+            }
+        },
+        methods: {
+        },
+        watch: {
+            drag(val) {
+                this.$emit('update:compList', val)
+            }
+        }
     }
 </script>
 

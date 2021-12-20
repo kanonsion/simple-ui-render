@@ -6,10 +6,14 @@
                 :key="item.type"
                 :label="item.label"
                 :name="item.type">
-                <div class="tab-item">
-                    <p class="title">{{item.type}}</p>
-                    <p class="des">{{item.label}}</p>
-                </div>
+                <vue-draggable
+                    v-model="config"
+                    :group="{name: 'comp', pull: 'clone'}">
+                    <div class="tab-item">
+                        <p class="title">{{item.type}}</p>
+                        <p class="des">{{item.label}}</p>
+                    </div>
+                </vue-draggable>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -23,13 +27,13 @@
         data(){
             return {
                 activeName: type.table,
-                config
+                config,
             }
         },
         methods: {
             handleClick(val){
                 this.$emit('update:type', val)
-            }
+            },
         }
     }
 </script>
